@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Support</title>
+
+    <!-- Embedded Messaging Bootstrap -->
+    <script type="text/javascript">
+        function initEmbeddedMessaging() {
+            try {
+                embeddedservice_bootstrap.settings.language = 'en_US';
+
+                embeddedservice_bootstrap.init(
+                    '00DgL000002116h', /* Org ID */
+                    'Agent_ESD',      /* Embedded Service Deployment Name */
+                    'https://orgfarm-9b7c49efac-dev-ed.develop.my.site.com/ESWAgentESD1744861847984',
+                    {
+                        scrt2URL: 'https://orgfarm-9b7c49efac-dev-ed.develop.my.salesforce-scrt.com'
+                    }
+                );
+            } catch (err) {
+                console.error('Error loading Embedded Messaging: ', err);
+            }
+        }
+    </script>
+
+    <script
+        type="text/javascript"
+        src="https://orgfarm-9b7c49efac-dev-ed.develop.my.site.com/ESWAgentESD1744861847984/assets/js/bootstrap.min.js"
+        onload="initEmbeddedMessaging()">
+    </script>
+</head>
+
+<body>
+
+<h2>Contact Support</h2>
+
+<!-- Web-to-Case Form -->
+<form
+    action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8"
+    method="POST">
+
+    <input type="hidden" name="orgid" value="00DgL000002116h">
+    <input type="hidden" name="retURL"
+           value="https://orgfarm-9b7c49efac-dev-ed.develop.my.salesforce-setup.com">
+    <input type="hidden" name="external" value="1">
+
+    <label for="name">Contact Name</label><br>
+    <input id="name" name="name" type="text" maxlength="80"><br><br>
+
+    <label for="email">Email</label><br>
+    <input id="email" name="email" type="email" maxlength="80"><br><br>
+
+    <label for="phone">Phone</label><br>
+    <input id="phone" name="phone" type="text" maxlength="40"><br><br>
+
+    <label for="subject">Subject</label><br>
+    <input id="subject" name="subject" type="text" maxlength="80"><br><br>
+
+    <label for="description">Description</label><br>
+    <textarea id="description" name="description" rows="4" cols="40"></textarea><br><br>
+
+    <input type="submit" value="Submit Case">
+</form>
+
+</body>
+</html>
